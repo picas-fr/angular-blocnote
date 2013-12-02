@@ -1,0 +1,18 @@
+<form name="noteForm" class="form" role="form">
+
+    <div class="note-images">
+        <img ng-src="{{img}}"
+            class="note"
+            ng-repeat="img in note.images"
+            ng-class="{active: mainImageUrl==img}">
+    </div>
+
+    <h1>{{note.name}}</h1>
+
+    <p>{{note.description}}</p>
+
+    <div class="alert alert-danger">
+        <p>Are-you sure you want to delete this entry? This action is not recoverable ...</p>
+        <button type="button" ng-click="destroy()" ng-show="note.id" class="btn btn-danger">Delete</button>
+    </div>
+</form>

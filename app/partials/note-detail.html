@@ -1,0 +1,118 @@
+<div class="note-images">
+    <img ng-src="{{img}}"
+        class="note"
+        ng-repeat="img in note.images"
+        ng-class="{active: mainImageUrl==img}">
+</div>
+
+<h1>{{note.name}}</h1>
+
+<p>{{note.description}}</p>
+
+<ul class="note-thumbs">
+    <li ng-repeat="img in note.images" class="thumbnail">
+        <img ng-src="{{img}}" ng-click="setImage(img)">
+    </li>
+</ul>
+
+<ul class="specs">
+    <li>
+        <span>Availability and Networks</span>
+        <dl>
+            <dt>Availability</dt>
+            <dd ng-repeat="availability in note.availability">{{availability}}</dd>
+        </dl>
+    </li>
+    <li>
+        <span>Battery</span>
+        <dl>
+            <dt>Type</dt>
+            <dd>{{note.battery.type}}</dd>
+            <dt>Talk Time</dt>
+            <dd>{{note.battery.talkTime}}</dd>
+            <dt>Standby time (max)</dt>
+            <dd>{{note.battery.standbyTime}}</dd>
+        </dl>
+    </li>
+    <li>
+        <span>Storage and Memory</span>
+        <dl>
+            <dt>RAM</dt>
+            <dd>{{note.storage.ram}}</dd>
+            <dt>Internal Storage</dt>
+            <dd>{{note.storage.flash}}</dd>
+        </dl>
+    </li>
+    <li>
+        <span>Connectivity</span>
+        <dl>
+            <dt>Network Support</dt>
+            <dd>{{note.connectivity.cell}}</dd>
+            <dt>WiFi</dt>
+            <dd>{{note.connectivity.wifi}}</dd>
+            <dt>Bluetooth</dt>
+            <dd>{{note.connectivity.bluetooth}}</dd>
+            <dt>Infrared</dt>
+            <dd>{{note.connectivity.infrared | checkmark}}</dd>
+            <dt>GPS</dt>
+            <dd>{{note.connectivity.gps | checkmark}}</dd>
+        </dl>
+    </li>
+    <li>
+        <span>Android</span>
+        <dl>
+            <dt>OS Version</dt>
+            <dd>{{note.android.os}}</dd>
+            <dt>UI</dt>
+            <dd>{{note.android.ui}}</dd>
+        </dl>
+    </li>
+    <li>
+        <span>Size and Weight</span>
+        <dl>
+            <dt>Dimensions</dt>
+            <dd ng-repeat="dim in note.sizeAndWeight.dimensions">{{dim}}</dd>
+            <dt>Weight</dt>
+            <dd>{{note.sizeAndWeight.weight}}</dd>
+        </dl>
+    </li>
+    <li>
+        <span>Display</span>
+        <dl>
+            <dt>Screen size</dt>
+            <dd>{{note.display.screenSize}}</dd>
+            <dt>Screen resolution</dt>
+            <dd>{{note.display.screenResolution}}</dd>
+            <dt>Touch screen</dt>
+            <dd>{{note.display.touchScreen | checkmark}}</dd>
+        </dl>
+    </li>
+    <li>
+        <span>Hardware</span>
+        <dl>
+            <dt>CPU</dt>
+            <dd>{{note.hardware.cpu}}</dd>
+            <dt>USB</dt>
+            <dd>{{note.hardware.usb}}</dd>
+            <dt>Audio / headphone jack</dt>
+            <dd>{{note.hardware.audioJack}}</dd>
+            <dt>FM Radio</dt>
+            <dd>{{note.hardware.fmRadio | checkmark}}</dd>
+            <dt>Accelerometer</dt>
+            <dd>{{note.hardware.accelerometer | checkmark}}</dd>
+        </dl>
+    </li>
+    <li>
+        <span>Camera</span>
+        <dl>
+            <dt>Primary</dt>
+            <dd>{{note.camera.primary}}</dd>
+            <dt>Features</dt>
+            <dd>{{note.camera.features.join(', ')}}</dd>
+        </dl>
+    </li>
+    <li>
+        <span>Additional Features</span>
+        <dd>{{note.additionalFeatures}}</dd>
+    </li>
+</ul>

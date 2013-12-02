@@ -1,0 +1,18 @@
+# no indexing
+Options -Indexes
+
+# follow symbolic links
+Options +FollowSymLinks
+
+# the rewrite URLs rules
+RewriteEngine On
+#RewriteBase /
+
+# no access to anything beginning with a dot
+RewriteRule ^(.*/)?\.(.*)/ - [F]
+
+# skip all this if the file or the dir exists
+# `index.php` will handle all requests
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*) interface.php?$1 [QSA,L]

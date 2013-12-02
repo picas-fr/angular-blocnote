@@ -1,0 +1,43 @@
+<div class="alert alert-warning alert-dismissable" ng-show="messages.length">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <p ng-repeat="message in messages" class="">{{message}}</p>
+</div>
+
+<form name="noteForm" class="form" role="form">
+
+    <div class="form-group" ng-class="{error: noteForm.name.$invalid}">
+        <label class="hidden-xs" for="title">Title</label>
+        <input type="text" class="form-control" name="title" ng-model="note.name" placeholder="My note" required>
+        <span ng-show="noteForm.name.$error.required" class="help-block help-inline">Name is required</span>
+    </div>
+
+    <br>
+
+    <div class="form-group" ng-class="{error: noteForm.url.$invalid}">
+        <label class="hidden-xs" for="url">Link</label>
+        <input type="url" class="form-control" name="site" ng-model="note.url" placeholder="(http://)www.test.com">
+        <span ng-show="noteForm.url.$error.url" class="help-block help-inline">This is not an URL</span>
+    </div>
+
+    <br>
+
+    <div class="form-group" ng-class="{error: noteForm.description.$invalid}">
+        <label class="hidden-xs" for="description">Description</label>
+        <textarea class="form-control" rows="3" name="description" ng-model="note.description" placeholder="description"></textarea>
+    </div>
+
+    <br>
+
+    <a href="#/" class="btn btn-default">Cancel</a>
+    <button type="submit" ng-click="save()" ng-enabled="noteForm.$valid" class="btn btn-primary">Save</button>
+    <button type="button" ng-click="reset()" class="btn btn-info">Reset</button>
+    <button type="button" ng-click="destroy()" ng-show="note.id" class="btn btn-danger">Delete</button>
+
+</form>
+</div>
+
+<div ng-show="appDebug">
+    <hr>    
+    Debug View:
+    <pre>form={{noteForm}}</pre>
+</div>
